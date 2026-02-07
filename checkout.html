@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern E-Commerce Site - Checkout</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="toast_styles.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">Markam</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#featured">Featured</a></li>
+                    <li><a href="index.html#products">Products</a></li>
+
+                    <li><a href="cart.html" id="cart-btn">My Cart (0)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <div class="container checkout-container">
+            <h1>Checkout Information</h1>
+
+            <div class="checkout-content">
+                <div class="checkout-form-container">
+                    <!-- Adres Bilgileri Formu -->
+                    <form id="checkout-form">
+                        <h3>Delivery Address</h3>
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Full Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="ornek@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="0555 555 55 55">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address *</label>
+                            <textarea id="address" name="address" rows="3" required
+                                placeholder="Neighborhood, Street, No..."></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">Zip Code *</label>
+                                <input type="text" id="zip" name="zip" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Proceed to Payment (PayTR)</button>
+                    </form>
+
+                    <!-- PayTR iFrame Container (Backend entegrasyonundan sonra aktif olacak) -->
+                    <div id="paytr-iframe-container" style="display:none; margin-top: 2rem;">
+                        <h3>Secure Payment - PayTR</h3>
+                        <div id="paytr-iframe"
+                            style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; min-height: 500px;">
+                            <!-- PayTR iframe will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Backend Entegrasyon Notu (Geliştirici için) -->
+                    <div class="dev-note"
+                        style="margin-top: 2rem; padding: 1rem; background-color: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
+                        <h4 style="margin-top: 0; color: #856404;">🔧 Backend Entegrasyonu Gerekli</h4>
+                        <p style="margin-bottom: 0.5rem; color: #856404; font-size: 0.9rem;">
+                            <strong>PayTR gerçek entegrasyonu için:</strong>
+                        </p>
+                        <ol style="margin: 0; padding-left: 1.5rem; color: #856404; font-size: 0.85rem;">
+                            <li>Backend (PHP/Node.js) kurulumu</li>
+                            <li>PayTR API anahtarları (Merchant ID, Merchant Key, Merchant Salt)</li>
+                            <li>Token oluşturma endpoint'i</li>
+                            <li>Callback URL (Ödeme sonuç bildirimi)</li>
+                            <li>PayTR iframe URL'sini bu sayfaya enjekte etme</li>
+                        </ol>
+                        <p style="margin-top: 0.5rem; margin-bottom: 0; color: #856404; font-size: 0.85rem;">
+                            📖 Dokümantasyon: <a href="https://www.paytr.com/magaza/api-entegrasyon" target="_blank"
+                                style="color: #856404; text-decoration: underline;">PayTR API Dökümanı</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="checkout-summary">
+                    <h3>Order Summary</h3>
+                    <div id="checkout-items-summary">
+                        <!-- Items summary injected via JS -->
+                    </div>
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="checkout-subtotal">₺0,00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span>Free</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total Amount:</span>
+                        <span id="checkout-total">₺0,00</span>
+                    </div>
+
+                    <div style="margin-top: 1.5rem; padding: 1rem; background-color: #f8f9fa; border-radius: 4px;">
+                        <p style="margin: 0; font-size: 0.85rem; color: #666; text-align: center;">
+                            <img src="https://www.paytr.com/images/logo.png" alt="PayTR"
+                                style="height: 24px; margin-bottom: 0.5rem;"><br>
+                            Secure payment provided by PayTR infrastructure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Markam. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="#" aria-label="Instagram">Instagram</a></li>
+                <li><a href="#" aria-label="Facebook">Facebook</a></li>
+                <li><a href="#" aria-label="Twitter">X</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Order Success Modal -->
+    <div class="modal-overlay" id="success-modal-overlay"></div>
+    <div class="modal modal-wide" id="success-modal">
+        <div class="modal-content">
+            <div class="success-icon">✓</div>
+            <h2>Order Received!</h2>
+            <p>Order number: <strong id="order-number">#12345</strong></p>
+
+            <!-- Sipariş Takip Aşamaları -->
+            <div class="order-timeline">
+                <div class="timeline-step active completed">
+                    <div class="step-icon">✓</div>
+                    <div class="step-content">
+                        <h4>Order Received</h4>
+                        <p class="step-date">Today</p>
+                    </div>
+                </div>
+                <div class="timeline-line"></div>
+                <div class="timeline-step">
+                    <div class="step-icon">📦</div>
+                    <div class="step-content">
+                        <h4>Processing</h4>
+                        <p class="step-desc">Within 1-2 business days</p>
+                    </div>
+                </div>
+                <div class="timeline-line"></div>
+                <div class="timeline-step">
+                    <div class="step-icon">🚚</div>
+                    <div class="step-content">
+                        <h4>Shipped</h4>
+                        <p class="step-desc">Estimated 2-3 days</p>
+                    </div>
+                </div>
+                <div class="timeline-line"></div>
+                <div class="timeline-step">
+                    <div class="step-icon">🏠</div>
+                    <div class="step-content">
+                        <h4>Delivered</h4>
+                        <p class="step-desc">Arrived at your address</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #666;">
+                You can track your order status via email.
+            </p>
+            <a href="index.html" class="btn btn-primary">Continue Shopping</a>
+        </div>
+    </div>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-container" id="chatbot-container">
+        <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open Chat">
+            <span class="chat-icon">💬</span>
+        </button>
+        <div class="chat-window" id="chat-window">
+            <div class="chat-header">
+                <h3>Assistant</h3>
+                <button class="close-chat" id="close-chat">&times;</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="bot-message">Hello! I'm your Markam Assistant. How can I help you today?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Type a message..." />
+                <button id="send-chat">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

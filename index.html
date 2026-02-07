@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern E-Commerce Site</title>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="toast_styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="index.html" class="logo">Markam</a>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search products..." />
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#featured">Featured</a></li>
+          <li><a href="wishlist.html" class="nav-with-badge">Wishlist <span id="favorite-count"
+                class="badge">0</span></a></li>
+          <li><a href="cart.html" id="cart-btn">My Cart (0)</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+      <nav>
+        <a href="index.html" class="mobile-menu-link">Home</a>
+        <a href="index.html#featured" class="mobile-menu-link">Featured</a>
+        <a href="wishlist.html" class="mobile-menu-link">Wishlist</a>
+        <a href="cart.html" class="mobile-menu-link">My Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Modern & Stylish Products</h1>
+        <p>
+          Discover your favorite products. Complete your style with our new collection.
+        </p>
+        <a href="#products" class="btn btn-primary">Start Shopping</a>
+      </div>
+      <div class="hero-image">
+        <div class="hero-slider">
+          <img src="images/hero-1.jpg" alt="Hero Görüntüsü 1" class="active" />
+          <img src="images/hero-2.jpg" alt="Hero Görüntüsü 2" />
+          <img src="images/product-1.jpg" alt="Hero Görüntüsü 3" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Featured Products Section -->
+  <section id="featured" class="featured-section">
+    <div class="container">
+      <h2>Featured Products</h2>
+      <div class="featured-products">
+        <!-- Featured product cards -->
+        <div class="product-card" data-category="aksesuar">
+          <button class="favorite-btn" data-id="1" onclick="toggleFavorite(1)">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </button>
+          <div class="sale-badge">-%20</div>
+
+          <a href="product-detail.html?id=1">
+            <img src="images/product-1.jpg" alt="Ürün 1" />
+          </a>
+          <h3>Ürün 1</h3>
+          <div class="stars"><span class="star full">★</span><span class="star full">★</span><span
+              class="star full">★</span><span class="star full">★</span><span class="star half">★</span> <span
+              class="rating-value">4.8</span></div>
+          <p class="price">
+            <span class="old-price">₺249,00</span>
+            ₺199,00
+          </p>
+          <button class="btn btn-secondary">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="kadin">
+          <button class="favorite-btn" data-id="2" onclick="toggleFavorite(2)">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </button>
+
+          <a href="product-detail.html?id=2">
+            <img src="images/product-2.jpg" alt="Ürün 2" />
+          </a>
+          <h3>Ürün 2</h3>
+          <div class="stars"><span class="star full">★</span><span class="star full">★</span><span
+              class="star full">★</span><span class="star full">★</span><span class="star half">★</span> <span
+              class="rating-value">4.5</span></div>
+          <p class="price">₺249,00</p>
+          <button class="btn btn-secondary">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="erkek">
+          <button class="favorite-btn" data-id="3" onclick="toggleFavorite(3)">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </button>
+          <div class="sale-badge">-%25</div>
+
+          <a href="product-detail.html?id=3">
+            <img src="images/product-3.jpg" alt="Ürün 3" />
+          </a>
+          <h3>Ürün 3</h3>
+          <div class="stars"><span class="star full">★</span><span class="star full">★</span><span
+              class="star full">★</span><span class="star full">★</span><span class="star full">★</span> <span
+              class="rating-value">4.9</span></div>
+          <p class="price">
+            <span class="old-price">₺399,00</span>
+            ₺299,00
+          </p>
+          <button class="btn btn-secondary">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="kadin">
+
+          <a href="product-detail.html?id=4">
+            <img src="images/product-a.jpg" alt="Ürün 4" />
+          </a>
+          <h3>Ürün 4</h3>
+          <div class="stars"><span class="star full">★</span><span class="star full">★</span><span
+              class="star full">★</span><span class="star full">★</span><span class="star empty">★</span> <span
+              class="rating-value">4.2</span></div>
+          <p class="price">₺159,00</p>
+          <button class="btn btn-secondary">Add to Cart</button>
+        </div>
+      </div>
+      <div id="no-featured-results" class="no-results" style="display:none;">
+        <p>No featured products found matching your criteria.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="products-section">
+    <div class="container">
+      <h2>Our Products</h2>
+      <div class="products-grid">
+        <div id="no-products-results" class="no-results"
+          style="display:none; width: 100%; text-align: center; padding: 2rem;">
+          <p>No products found matching your criteria.</p>
+        </div>
+        <div class="product-card" data-category="cocuk">
+          <button class="favorite-btn" data-id="A" onclick="toggleFavorite('A')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </button>
+
+          <a href="product-detail.html?id=A">
+            <img src="images/product-c.jpg" alt="Ürün A" />
+          </a>
+          <h3>Ürün A</h3>
+          <p class="price">₺119,00</p>
+          <button class="btn btn-secondary">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="erkek">
+          <button class="favorite-btn" data-id="B" onclick="toggleFavorite('B')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </button>
+
+          <a href="product-detail.html?id=B">
+            <img src="images/product-b.jpg" alt="Ürün B" />
+          </a>
+          <h3>Ürün B</h3>
+          <p class="price">₺149,00</p>
+          <button class="btn btn-secondary">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="aksesuar">
+          <button class="favorite-btn" data-id="C" onclick="toggleFavorite('C')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </button>
+
+          <a href="product-detail.html?id=C">
+            <img src="images/product-a.jpg" alt="Ürün C" />
+          </a>
+          <h3>Ürün C</h3>
+          <p class="price">₺179,00</p>
+          <button class="btn btn-secondary">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="kadin">
+          <button class="favorite-btn" data-id="D" onclick="toggleFavorite('D')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </button>
+
+          <a href="product-detail.html?id=D">
+            <img src="images/product-2.jpg" alt="Ürün D" />
+          </a>
+          <h3>Ürün D</h3>
+          <p class="price">₺139,00</p>
+          <button class="btn btn-secondary">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="cocuk">
+          <button class="favorite-btn" data-id="E" onclick="toggleFavorite('E')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </button>
+
+          <a href="product-detail.html?id=E">
+            <img src="images/product-3.jpg" alt="Ürün E" />
+          </a>
+          <h3>Ürün E</h3>
+          <p class="price">₺209,00</p>
+          <button class="btn btn-secondary">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="aksesuar">
+          <button class="favorite-btn" data-id="F" onclick="toggleFavorite('F')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </button>
+
+          <a href="product-detail.html?id=F">
+            <img src="images/product-f.jpg" alt="Ürün F" />
+          </a>
+          <h3>Ürün F</h3>
+          <p class="price">₺189,00</p>
+          <button class="btn btn-secondary">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="erkek">
+          <button class="favorite-btn" data-id="G" onclick="toggleFavorite('G')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </button>
+
+          <a href="product-detail.html?id=G">
+            <img src="images/product-g.jpg" alt="Ürün G" />
+          </a>
+          <h3>Ürün G</h3>
+          <p class="price">₺229,00</p>
+          <button class="btn btn-secondary">Add to Cart</button>
+        </div>
+        <div class="product-card" data-category="kadin">
+          <button class="favorite-btn" data-id="H" onclick="toggleFavorite('H')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </button>
+
+          <a href="product-detail.html?id=H">
+            <img src="images/product-h.jpg" alt="Ürün H" />
+          </a>
+          <h3>Ürün H</h3>
+          <p class="price">₺259,00</p>
+          <button class="btn btn-secondary">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Markam. All rights reserved.</p>
+      <ul class="social-links">
+        <li><a href="#" aria-label="Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="Facebook">Facebook</a></li>
+        <li><a href="#" aria-label="Twitter">X</a></li>
+      </ul>
+    </div>
+  </footer>
+
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- AI Chatbot -->
+  <div class="chatbot-container" id="chatbot-container">
+    <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open Chat">
+      <span class="chat-icon">💬</span>
+    </button>
+    <div class="chat-window" id="chat-window">
+      <div class="chat-header">
+        <h3>Assistant</h3>
+        <button class="close-chat" id="close-chat">&times;</button>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="bot-message">Hello! I'm your Markam Assistant. How can I help you today?</div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Type a message..." />
+        <button id="send-chat">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
